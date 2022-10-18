@@ -78,4 +78,13 @@ class ExampleApplicationTests {
         Object out = producerTemplate.requestBody("direct:noStreamReading", is, Object.class);
         Assertions.assertEquals(data, out);
     }
+
+    @Test
+    void withoutOriginalMessage() {
+        // Data is converted to string and put in exchange property
+        String data = "data";
+        InputStream is = new ByteArrayInputStream(data.getBytes());
+        Object out = producerTemplate.requestBody("direct:withoutOriginalMessage", is, Object.class);
+        Assertions.assertEquals(data, out);
+    }
 }
