@@ -40,7 +40,7 @@ public class Routes extends RouteBuilder {
         from("direct:noStreamReading").streamCaching()
                 .throwException(new ExceptionOne());
 
-        from("direct:withoutOriginalMessage").noStreamCaching()
+        from("direct:setBodyAsExchangeProperty").noStreamCaching()
                 .convertBodyTo(String.class)
                 .setProperty("OriginalBody", body())
                 .throwException(new ExceptionTwo());

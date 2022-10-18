@@ -80,11 +80,11 @@ class ExampleApplicationTests {
     }
 
     @Test
-    void withoutOriginalMessage() {
+    void setBodyAsExchangeProperty() {
         // Data is converted to string and put in exchange property
         String data = "data";
         InputStream is = new ByteArrayInputStream(data.getBytes());
-        Object out = producerTemplate.requestBody("direct:withoutOriginalMessage", is, Object.class);
+        Object out = producerTemplate.requestBody("direct:setBodyAsExchangeProperty", is, Object.class);
         Assertions.assertEquals(data, out);
     }
 }
